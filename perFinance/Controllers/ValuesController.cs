@@ -4,11 +4,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace perFinance.Controllers
 {
     public class ValuesController : ApiController
     {
+        public ValuesController()
+        {
+
+            System.Web.HttpContext.Current.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+        }
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -22,8 +28,9 @@ namespace perFinance.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public string Post([FromBody]string value)
         {
+            return value;
         }
 
         // PUT api/values/5

@@ -1,5 +1,4 @@
 ﻿using perFinance.Generate;
-using perFinance.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,22 +6,19 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using System.Web.Mvc;
 
 namespace perFinance.Controllers
 {
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
 
-    public class DataController : ApiController
+    public class AccNumberIsCorrectController : ApiController
     {
-        
-        public IList<operationItem> Get(string userName)
+        Server serv = Server.Init(); 
+        public bool get(string accNumber)
         {
-            var serv = Server.Init();
-            var str = serv.getItemEnumerableForName(userName);
-            
-            return str;
+          return  this.serv.accNumberIsContains(accNumber);
         }
+
     }
 }
